@@ -1,0 +1,20 @@
+default_language_version:
+  python: python3.11
+repos:
+  - repo: local
+    hooks:
+      - id: format
+        name: format
+        entry: make format
+        language: python
+        stages: [commit]
+      - id: lint
+        name: lint
+        entry: make lint
+        language: python
+        stages: [commit]
+      - id: typecheck
+        name: typecheck
+        entry: make typecheck
+        language: python
+        stages: [ commit ]
