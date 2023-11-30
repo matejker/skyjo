@@ -39,3 +39,7 @@ typecheck: requirements_tools
 .PHONY: activate
 activate: requirements_tools
 	poetry run pre-commit install
+
+.PHONY: notebook
+notebook: requirements_tools
+	poetry run jupyter notebook
