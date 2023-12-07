@@ -1,20 +1,18 @@
 import random
 
 from skyjo.policies.policy import Policy
-from skyjo.environment import EXPECTED_VALUE
 
 
 class RandomPolicy(Policy):
-    def __init__(self, board, deck, discard_pile, expected_value=EXPECTED_VALUE):
+    def __init__(self, board, deck, discard_pile):
         self.board = board
         self.deck = deck
         self.discard_pile = discard_pile
-        self.expected_value = expected_value
 
     def __repr__(self):
         return "Random Policy"
 
-    def turn(self) -> tuple[int, int]:
+    def turn(self, *argv) -> tuple[int, int]:
         """Return a tuple of (card, position)."""
         discard = False
 

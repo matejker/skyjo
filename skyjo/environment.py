@@ -19,7 +19,7 @@ CARDS_QUANTITY = {
     12: 10,
 }
 
-EXPECTED_VALUE = sum(v * q for v, q in CARDS_QUANTITY.items()) / 150  # 76 / 15 = 5.0666
+EXPECTED_VALUE = round(sum(v * q for v, q in CARDS_QUANTITY.items()) / 150, 2)  # 76 / 15 = 5.0666
 
 
 class PlayersBoard:
@@ -35,7 +35,7 @@ class PlayersBoard:
         self.visible_board[position] = self.board[position]
         return self.visible_board[position]
 
-    def value(self) -> int:
+    def value(self) -> float:
         return round(sum(v for v in self.board), 3)
 
     def unknown_cards(self) -> list[int]:
@@ -100,3 +100,16 @@ class DiscardPile:
 
     def __repr__(self) -> str:
         return f"DiscardPile({len(self)})"
+
+
+class Game:
+    def __init__(self, policies: list) -> None:
+        self.deck = Deck()
+        self.discard_pile = DiscardPile()
+        self.boards = [PlayersBoard([self.deck.draw() for _ in range(12)]) for _ in range(len(policies))]
+        self.players = policies
+        self.turn = 0
+        self.finished = False
+
+    def min_value(self) -> int:
+        return min(len(b.unknown_cards()) for b in self.boards)
