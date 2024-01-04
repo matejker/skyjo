@@ -23,9 +23,13 @@ EXPECTED_VALUE = round(sum(v * q for v, q in CARDS_QUANTITY.items()) / 150, 2)  
 
 
 class PlayersBoard:
-    def __init__(self, unknown_cards: list) -> None:
+    def __init__(self, unknown_cards: list, two_cards: bool = True) -> None:
         self.board: list[int] = unknown_cards
         self.visible_board: list[Optional[int]] = [None] * 12
+        if two_cards:
+            a, b = random.sample(range(12), 2)
+            self.visible_board[a] = self.board[a]
+            self.visible_board[b] = self.board[b]
 
     def turn_replace_card(self, card: int, position: int) -> None:
         self.visible_board[position] = card
