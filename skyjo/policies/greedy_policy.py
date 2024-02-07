@@ -12,7 +12,7 @@ class GreedyPolicy(Policy):
         self.acceptance_value = acceptance_value
 
     def __repr__(self) -> str:
-        return f"Greedy Policy({self.acceptance_value=})".replace("self.", "")
+        return "Greedy Policy"
 
     def turn(self, *argv) -> tuple[int, int]:
         """Return a tuple of (card, position)."""

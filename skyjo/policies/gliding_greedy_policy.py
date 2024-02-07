@@ -1,5 +1,4 @@
 import random
-from math import ceil
 from enum import Enum
 
 from skyjo.policies.policy import Policy
@@ -25,7 +24,7 @@ class GlidingGreedyPolicy(Policy):
         self.gliding = gliding
 
     def __repr__(self) -> str:
-        return f"Gliding Greedy Policy({self.acceptance_value=}, {self.gliding=})".replace("self.", "")
+        return "Gliding Greedy Policy"
 
     def turn(self, other_player_board) -> tuple[int, int]:
         """Return a tuple of (card, position)."""

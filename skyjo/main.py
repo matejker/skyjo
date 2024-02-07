@@ -1,5 +1,6 @@
-from skyjo.environment import PlayersBoard, Deck, DiscardPile, EXPECTED_VALUE
-from skyjo.policies.greedy_policy import GreedyPolicy
+from skyjo.environment import PlayersBoard, Deck, DiscardPile
+
+# from skyjo.policies.greedy_policy import GreedyPolicy
 from skyjo.policies.random_policy import RandomPolicy
 
 if __name__ == "__main__":
